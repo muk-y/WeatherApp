@@ -6,11 +6,18 @@
 //
 
 import Foundation
+import UIKit.UIImage
 
 struct GlobalConstants {
     
     static let API_KEY = "2d4e852a3aa6c57f13e19c8bf611a9d7"
     static let IMAGE_BASE_URL = "https://openweathermap.org/img/wn/"
+    static let requiredLocations = ["Kathmandu", "Pokhara", "Ilam"]
+    
+    struct Image {
+        static let favourite = UIImage(named: "favourite")
+        static let unfavourite = UIImage(named: "unfavourite")
+    }
     
     struct Notification {
         

@@ -26,6 +26,7 @@ class WeatherDetailViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel?
     @IBOutlet weak var windSpeedLabel: UILabel?
     @IBOutlet weak var humidityLabel: UILabel?
+    @IBOutlet weak var favouriteButton: UIButton?
     
     // MARK: VC's Life cycle
     override func viewDidLoad() {
@@ -40,11 +41,15 @@ class WeatherDetailViewController: UIViewController {
     }
     
     // MARK: IBActions
+    @IBAction func favouriteButtonTapped(_ sender: UIButton) {
+        favouriteButton?.isSelected.toggle()
+    }
     
     // MARK: Other Functions
     private func setup() {
         setupView()
         setupLabel()
+        setupButton()
     }
     
     private func setupView() {
@@ -69,6 +74,11 @@ class WeatherDetailViewController: UIViewController {
         })
     }
     
+    private func setupButton() {
+        favouriteButton?.setImage(GlobalConstants.Image.favourite, for: .selected)
+        favouriteButton?.setImage(GlobalConstants.Image.unfavourite, for: .normal)
+    }
+    
     private func setData() {
         locationLabel?.text = viewModel?.location
         weatherConditionLabel?.text = viewModel?.weatherCondition
@@ -76,6 +86,8 @@ class WeatherDetailViewController: UIViewController {
         temperatureLabel?.text = viewModel?.temperature
         windSpeedLabel?.text = viewModel?.windSpeed
         humidityLabel?.text = viewModel?.humidity
+        favouriteButton?.isHidden = viewModel?.isFavourite == nil
+        favouriteButton?.isSelected = viewModel?.isFavourite ?? false
     }
     
 }

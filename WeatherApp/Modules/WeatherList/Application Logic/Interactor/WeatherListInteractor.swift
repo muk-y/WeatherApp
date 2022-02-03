@@ -13,7 +13,6 @@ class WeatherListInteractor {
     // MARK: Properties
     weak var output: WeatherListInteractorOutput?
     private let service: WeatherListServiceType
-    private var cities = ["Kathmandu", "Pokhara", "Ilam"]
     private let dispatchGroup = DispatchGroup()
     private var models: [WeatherData] = []
     
@@ -40,6 +39,7 @@ extension WeatherListInteractor: WeatherListInteractorInput {
     
     func getData() {
         models.removeAll()
+        let cities = GlobalConstants.requiredLocations
         cities.forEach({
             dispatchGroup.enter()
             service.fetchWeatherData(of: $0) { [weak self] result in

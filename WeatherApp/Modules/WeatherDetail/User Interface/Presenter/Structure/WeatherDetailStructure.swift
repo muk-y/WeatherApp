@@ -15,5 +15,6 @@ struct WeatherDetailStructure {
     var humidity: String?
     var weatherCondition: String?
     var weatherConditionIcon: String?
+    var isFavourite: Bool?
     
 }
