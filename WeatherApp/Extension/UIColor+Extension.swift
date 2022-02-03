@@ -28,6 +28,6 @@ extension UIColor {
     }
     
     static let primary = UIColor(red: 35 / 255, green: 35 / 255, blue: 35 / 255, alpha: 1)
-    static let secondary = UIColor(hex: "#8F96FF")
+    static let secondary = UIColor(hex: "#8F96FF").withAlphaComponent(0.33)
     
 }

@@ -37,7 +37,7 @@ class WeatherListTableViewCell: UITableViewCell {
     }
     
     private func setupView() {
-        containerView?.backgroundColor = UIColor.secondary.withAlphaComponent(0.33)
+        containerView?.backgroundColor = .secondary
         containerView?.curve = 12
     }
     

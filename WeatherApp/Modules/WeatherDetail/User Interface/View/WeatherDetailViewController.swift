@@ -34,6 +34,11 @@ class WeatherDetailViewController: UIViewController {
         presenter?.viewIsReady()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "Weather Detail"
+    }
+    
     // MARK: IBActions
     
     // MARK: Other Functions
@@ -44,7 +49,7 @@ class WeatherDetailViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .primary
-        weatherConditionContainerView?.backgroundColor = UIColor.secondary.withAlphaComponent(0.33)
+        weatherConditionContainerView?.backgroundColor = .secondary
         weatherConditionContainerView?.capsuled()
     }
     
