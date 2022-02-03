@@ -13,11 +13,14 @@ class WeatherData: Codable {
     var weatherConditions: [WeatherCondition]?
     var sys: Sys?
     var main: Main?
+    var wind: Wind?
     
     enum CodingKeys: String, CodingKey {
         case location = "name"
         case weatherConditions = "weather"
-        case sys, main
+        case sys,
+             main,
+             wind
     }
     
     required init(from decoder: Decoder) throws {
@@ -26,6 +29,7 @@ class WeatherData: Codable {
         weatherConditions = try container.decodeIfPresent([WeatherCondition]?.self, forKey: .weatherConditions) ?? nil
         sys = try container.decodeIfPresent(Sys?.self, forKey: .sys) ?? nil
         main = try container.decodeIfPresent(Main?.self, forKey: .main) ?? nil
+        wind = try container.decodeIfPresent(Wind?.self, forKey: .wind) ?? nil
     }
     
 }

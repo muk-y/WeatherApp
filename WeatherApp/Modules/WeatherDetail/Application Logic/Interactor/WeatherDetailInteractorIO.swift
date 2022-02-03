@@ -2,14 +2,18 @@
 //  WeatherDetailInteractorIO.swift
 //  WeatherApp
 //
-//  Created by ekmacmini43 on 03/02/2022.
+//  Created by Mukesh Shakya on 03/02/2022.
 //
 //
 
-protocol WeatherDetailInteractorInput: class {
+protocol WeatherDetailInteractorInput: AnyObject {
+    
+    func getData()
 
 }
 
-protocol WeatherDetailInteractorOutput: class {
+protocol WeatherDetailInteractorOutput: AnyObject {
+    
+    func obtained(_ model: WeatherDetailStructure)
 
 }

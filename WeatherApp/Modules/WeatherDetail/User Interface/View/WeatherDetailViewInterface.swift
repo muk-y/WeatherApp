@@ -2,10 +2,12 @@
 //  WeatherDetailViewInterface.swift
 //  WeatherApp
 //
-//  Created by ekmacmini43 on 03/02/2022.
+//  Created by Mukesh Shakya on 03/02/2022.
 //
 //
 
-protocol WeatherDetailViewInterface: class {
+protocol WeatherDetailViewInterface: AnyObject, BaseViewInterface {
+    
+    func show(_ model: WeatherDetailViewModel)
     
 }
