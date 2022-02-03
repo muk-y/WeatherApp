@@ -55,7 +55,7 @@ extension WeatherListPresenter: WeatherListInteractorOutput {
     }
     
     func obtained(_ error: Error) {
-        print("Error: \(error.localizedDescription)")
+        view?.alert(message: error.localizedDescription)
     }
     
 }

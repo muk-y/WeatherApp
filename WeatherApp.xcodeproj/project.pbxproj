@@ -30,6 +30,8 @@
 		98BC244A27ABFBD800A746A7 /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC243F27ABFBD800A746A7 /* WeatherDetailViewController.swift */; };
 		98BC244B27ABFBD800A746A7 /* WeatherDetailViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC244027ABFBD800A746A7 /* WeatherDetailViewInterface.swift */; };
 		98BC244D27AC02ED00A746A7 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC244C27AC02ED00A746A7 /* Array+Extension.swift */; };
+		98BC244F27AC044B00A746A7 /* BaseViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC244E27AC044B00A746A7 /* BaseViewInterface.swift */; };
+		98BC245127AC04A200A746A7 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC245027AC04A200A746A7 /* UIViewController+Extension.swift */; };
 		AA33B1B827AAD16700A6B426 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33B1B727AAD16700A6B426 /* AppDelegate.swift */; };
 		AA33B1BA27AAD16700A6B426 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33B1B927AAD16700A6B426 /* SceneDelegate.swift */; };
 		AA33B1BC27AAD16700A6B426 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33B1BB27AAD16700A6B426 /* ViewController.swift */; };
@@ -80,6 +82,8 @@
 		98BC243F27ABFBD800A746A7 /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
 		98BC244027ABFBD800A746A7 /* WeatherDetailViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewInterface.swift; sourceTree = "<group>"; };
 		98BC244C27AC02ED00A746A7 /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		98BC244E27AC044B00A746A7 /* BaseViewInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewInterface.swift; sourceTree = "<group>"; };
+		98BC245027AC04A200A746A7 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		AA33B1B427AAD16700A6B426 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA33B1B727AAD16700A6B426 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA33B1B927AAD16700A6B426 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -285,6 +289,7 @@
 				AA33B20F27AADF8300A6B426 /* Networking */,
 				AA33B1CC27AAD18200A6B426 /* WireframeInput.swift */,
 				AA33B20927AADB8800A6B426 /* GlobalConstants.swift */,
+				98BC244E27AC044B00A746A7 /* BaseViewInterface.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -408,6 +413,7 @@
 				98BC242027ABF60C00A746A7 /* UIImageView+Extension.swift */,
 				98BC242527ABF98000A746A7 /* UISearchBar+Extension.swift */,
 				98BC244C27AC02ED00A746A7 /* Array+Extension.swift */,
+				98BC245027AC04A200A746A7 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -506,6 +512,7 @@
 				AA33B1BC27AAD16700A6B426 /* ViewController.swift in Sources */,
 				98BC241D27ABEDA300A746A7 /* Main.swift in Sources */,
 				98BC241927ABE7AE00A746A7 /* UIColor+Extension.swift in Sources */,
+				98BC245127AC04A200A746A7 /* UIViewController+Extension.swift in Sources */,
 				AA33B20A27AADB8800A6B426 /* GlobalConstants.swift in Sources */,
 				98BC244327ABFBD800A746A7 /* WeatherDetailService.swift in Sources */,
 				98BC242627ABF98000A746A7 /* UISearchBar+Extension.swift in Sources */,
@@ -536,6 +543,7 @@
 				98BC244D27AC02ED00A746A7 /* Array+Extension.swift in Sources */,
 				98BC244427ABFBD800A746A7 /* WeatherDetailInteractor.swift in Sources */,
 				98BC244827ABFBD800A746A7 /* WeatherDetailWireframeInput.swift in Sources */,
+				98BC244F27AC044B00A746A7 /* BaseViewInterface.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
