@@ -9,5 +9,7 @@
 protocol WeatherListModuleInterface: AnyObject {
     
     func viewIsReady()
+    func searchWeather(for location: String?)
+    func weatherDetail(of index: Int)
     
 }

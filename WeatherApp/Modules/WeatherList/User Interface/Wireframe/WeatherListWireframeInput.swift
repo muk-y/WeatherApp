@@ -10,4 +10,6 @@ import Foundation
 
 protocol WeatherListWireframeInput: WireframeInput {
     
+    func openWeatherDetail()
+    
 }

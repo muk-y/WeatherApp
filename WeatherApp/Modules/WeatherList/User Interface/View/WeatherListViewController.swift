@@ -34,6 +34,15 @@ class WeatherListViewController: UIViewController {
     private func setup() {
         setupView()
         setupTableView()
+        setupNavBar()
+    }
+    
+    private func setupNavBar() {
+        navigationItem.title = ""
+        let searchBar = CustomSearchBar()
+        searchBar.textField?.placeholder = "Search for a location"
+        searchBar.textField?.delegate = self
+        navigationItem.titleView = searchBar
     }
     
     private func setupTableView() {
@@ -44,7 +53,7 @@ class WeatherListViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = .black
+        view.backgroundColor = .primary
     }
     
 }
@@ -67,7 +76,7 @@ extension WeatherListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: WeatherListTableViewCell = tableView.dequeue(cellForRowAt: indexPath)
-        cell.viewModel = viewModels?[indexPath.row]
+        cell.viewModel = viewModels?.elementAt(index: indexPath.row)
         return cell
     }
     
@@ -76,6 +85,21 @@ extension WeatherListViewController: UITableViewDataSource {
 // MARK: UITableViewDataSource
 extension WeatherListViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.weatherDetail(of: indexPath.row)
+    }
     
+}
+
+//MARK: UITextFieldDelegate
+extension WeatherListViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if !(textField.text?.isEmpty ?? true) {
+            presenter?.searchWeather(for: textField.text)
+        }
+        return true
+    }
     
 }

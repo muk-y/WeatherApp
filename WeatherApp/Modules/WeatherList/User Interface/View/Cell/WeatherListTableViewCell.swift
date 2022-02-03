@@ -37,7 +37,7 @@ class WeatherListTableViewCell: UITableViewCell {
     }
     
     private func setupView() {
-        containerView?.backgroundColor = UIColor(hex: "#8F96FF").withAlphaComponent(0.33)
+        containerView?.backgroundColor = UIColor.secondary.withAlphaComponent(0.33)
         containerView?.curve = 12
     }
     
@@ -50,7 +50,7 @@ class WeatherListTableViewCell: UITableViewCell {
     }
     
     private func setData() {
-        print("Temp: \(viewModel?.temperature ?? "")")
+        weatherImageView?.showImage(with: viewModel?.weatherConditionIcon)
         temperatureLabel?.text = viewModel?.temperature
         locationLabel?.text = viewModel?.location
         countryLabel?.text = viewModel?.country

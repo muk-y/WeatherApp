@@ -34,7 +34,7 @@
                                                             <rect key="frame" x="16" y="16" width="311" height="83"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Hfk-8c-2AD">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="255" height="76.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="235" height="76.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZq-Ro-5Ae">
                                                                             <rect key="frame" x="0.0" y="0.0" width="63" height="29"/>
@@ -62,9 +62,9 @@
                                                                     </subviews>
                                                                 </stackView>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AbR-JJ-uxL">
-                                                                    <rect key="frame" x="271" y="0.0" width="40" height="40"/>
+                                                                    <rect key="frame" x="251" y="0.0" width="60" height="60"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="40" id="8oc-ft-OBh"/>
+                                                                        <constraint firstAttribute="width" constant="60" id="8oc-ft-OBh"/>
                                                                         <constraint firstAttribute="width" secondItem="AbR-JJ-uxL" secondAttribute="height" multiplier="1:1" id="Mfd-B8-7Ir"/>
                                                                     </constraints>
                                                                 </imageView>

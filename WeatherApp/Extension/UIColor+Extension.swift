@@ -2,7 +2,7 @@
 //  UIColor+Extension.swift
 //  WeatherApp
 //
-//  Created by ekmacmini43 on 03/02/2022.
+//  Created by Mukesh Shakya on 03/02/2022.
 //
 
 import UIKit.UIColor
@@ -26,5 +26,8 @@ extension UIColor {
         }
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
-
+    
+    static let primary = UIColor(red: 35 / 255, green: 35 / 255, blue: 35 / 255, alpha: 1)
+    static let secondary = UIColor(hex: "#8F96FF")
+    
 }

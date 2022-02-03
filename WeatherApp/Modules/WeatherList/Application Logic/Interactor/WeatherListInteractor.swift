@@ -26,10 +26,11 @@ class WeatherListInteractor {
     private func convert(_ models: [WeatherData]) -> [WeatherListStructure] {
         models.map{
             let temperature = $0.main?.temperature
+            let iconName = $0.weatherConditions?.first?.icon
             return WeatherListStructure(location: $0.location,
                                         country: $0.sys?.country,
                                         temperature: temperature == nil ? "N/A" : "\(temperature ?? .zero)° C",
-                                        weatherConditionIcon: $0.weatherConditions?.first?.icon)}
+                                        weatherConditionIcon: iconName == nil ? nil : "\(GlobalConstants.IMAGE_BASE_URL)\(iconName ?? "")@2x.png")}
     }
     
 }
@@ -55,7 +56,25 @@ extension WeatherListInteractor: WeatherListInteractorInput {
         dispatchGroup.notify(queue: .main) { [weak self] in
             self?.output?.obtained(self?.convert(self?.models ?? []) ?? [])
         }
-        
+    }
+    
+    func searchWeather(for location: String?) {
+        guard let location = location else { return }
+        service.fetchWeatherData(of: location) { [weak self] result in
+            switch result {
+            case .success(let weatherData):
+                self?.output?.obtainedSearchSuccess()
+                GlobalConstants.Notification.didGetWeather.fire(with: weatherData)
+            case .failure(let error):
+                self?.output?.obtained(error)
+            }
+        }
+    }
+    
+    func sendWeatherData(of index: Int) {
+        if let model = models.elementAt(index: index) {
+            GlobalConstants.Notification.didGetWeather.fire(with: model)
+        }
     }
     
 }

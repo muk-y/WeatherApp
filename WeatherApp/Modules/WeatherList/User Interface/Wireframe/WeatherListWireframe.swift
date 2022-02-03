@@ -9,7 +9,10 @@
 import UIKit
 
 class WeatherListWireframe {
-     weak var view: UIViewController!
+    
+    weak var view: UIViewController!
+    private lazy var weatherDetailWireframe: WeatherDetailWireframeInput = {WeatherDetailWireframe()}()
+    
 }
 
 extension WeatherListWireframe: WeatherListWireframeInput {
@@ -31,4 +34,9 @@ extension WeatherListWireframe: WeatherListWireframeInput {
         self.view = viewController
         return viewController
     }
+    
+    func openWeatherDetail() {
+        view.navigationController?.pushViewController(weatherDetailWireframe.getMainView(), animated: true)
+    }
+    
 }

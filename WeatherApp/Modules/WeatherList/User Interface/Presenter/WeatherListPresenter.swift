@@ -32,6 +32,15 @@ extension WeatherListPresenter: WeatherListModuleInterface {
         interactor?.getData()
     }
     
+    func searchWeather(for location: String?) {
+        interactor?.searchWeather(for: location)
+    }
+    
+    func weatherDetail(of index: Int) {
+        wireframe?.openWeatherDetail()
+        interactor?.sendWeatherData(of: index)
+    }
+    
 }
 
 // MARK: WeatherList interactor output interface
@@ -39,6 +48,10 @@ extension WeatherListPresenter: WeatherListInteractorOutput {
     
     func obtained(_ models: [WeatherListStructure]) {
         view?.show(convert(models))
+    }
+    
+    func obtainedSearchSuccess() {
+        wireframe?.openWeatherDetail()
     }
     
     func obtained(_ error: Error) {
