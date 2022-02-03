@@ -16,7 +16,7 @@ class WeatherListService: WeatherListServiceType {
     
     //MARK: Other functions
     func fetchWeatherData(of city: String, completion: @escaping (Result<WeatherData, Error>) -> ()) {
-        NetworkManager.shared.getData(endpoint: .fetchWeather(city: city), type: WeatherData.self)
+        NetworkManager.shared.getData(endpoint: .fetchCityWeather(city: city), type: WeatherData.self)
             .sink { finished in
                 switch finished {
                 case .failure(let error):

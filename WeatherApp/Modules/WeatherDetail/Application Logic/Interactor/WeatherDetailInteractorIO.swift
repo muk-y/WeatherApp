@@ -16,5 +16,6 @@ protocol WeatherDetailInteractorInput: AnyObject {
 protocol WeatherDetailInteractorOutput: AnyObject {
     
     func obtained(_ model: WeatherDetailStructure)
+    func obtained(_ error: Error)
 
 }

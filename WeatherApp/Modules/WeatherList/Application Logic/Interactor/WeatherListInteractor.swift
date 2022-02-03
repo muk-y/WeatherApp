@@ -15,11 +15,19 @@ class WeatherListInteractor {
     private let service: WeatherListServiceType
     private let dispatchGroup = DispatchGroup()
     private var models: [WeatherData] = []
+    private var timer: Timer? {
+        didSet {
+            oldValue?.invalidate()
+        }
+    }
     
     // MARK: Initialization
     init(service: WeatherListServiceType) {
         self.service = service
         NotificationCenter.default.addObserver(self, selector: #selector(didGetWeather(_:)), name: GlobalConstants.Notification.didGetWeather.notificationName, object: nil)
+        timer = Timer.scheduledTimer(withTimeInterval: 60 * GlobalConstants.refreshingMinInterval, repeats: true, block: { [weak self] _ in
+            self?.getData()
+        })
     }
     
     // MARK: Converting entities
@@ -47,6 +55,7 @@ class WeatherListInteractor {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        timer = nil
     }
     
 }
@@ -63,6 +72,11 @@ extension WeatherListInteractor: WeatherListInteractorInput {
             service.fetchWeatherData(of: $0) { [weak self] result in
                 switch result {
                 case .success(let weatherData):
+                    if let message = weatherData.message {
+                        self?.output?.obtained(NSError(domain: "error", code: 22, userInfo: [NSLocalizedDescriptionKey: message]))
+                        self?.dispatchGroup.leave()
+                        return
+                    }
                     self?.models.append(weatherData)
                     self?.dispatchGroup.leave()
                 case .failure(let error):

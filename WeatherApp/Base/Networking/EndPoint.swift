@@ -9,12 +9,15 @@ import Foundation
 
 enum Endpoint {
     
-    case fetchWeather(city: String, unit: Unit = .celsius)
+    case fetchCityWeather(city: String, unit: Unit = .celsius)
+    case fetchWeather(id: Int, unit: Unit = .celsius)
     
     var path: String {
         switch self {
-        case .fetchWeather(let city, let unit):
+        case .fetchCityWeather(let city, let unit):
             return "weather?q=\(city)&units=\(unit.rawValue)"
+        case .fetchWeather(let id, let unit):
+            return "weather?id=\(id)&units=\(unit.rawValue)"
         }
     }
     

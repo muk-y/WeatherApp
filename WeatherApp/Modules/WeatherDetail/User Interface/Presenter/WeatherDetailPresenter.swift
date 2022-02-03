@@ -48,4 +48,8 @@ extension WeatherDetailPresenter: WeatherDetailInteractorOutput {
         view?.show(convert(model))
     }
     
+    func obtained(_ error: Error) {
+        view?.alert(message: error.localizedDescription)
+    }
+    
 }

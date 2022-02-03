@@ -14,11 +14,19 @@ class WeatherDetailInteractor {
     weak var output: WeatherDetailInteractorOutput?
     private let service: WeatherDetailServiceType
     private var model: WeatherData?
+    private var timer: Timer? {
+        didSet {
+            oldValue?.invalidate()
+        }
+    }
     
     // MARK: Initialization
     init(service: WeatherDetailServiceType) {
         self.service = service
         NotificationCenter.default.addObserver(self, selector: #selector(didGetWeather(_:)), name: GlobalConstants.Notification.didGetWeather.notificationName, object: nil)
+        timer = Timer.scheduledTimer(withTimeInterval: 60 * GlobalConstants.refreshingMinInterval, repeats: true, block: { [weak self] _ in
+            self?.refreshData()
+        })
     }
 
     // MARK: Converting entities
@@ -46,6 +54,7 @@ class WeatherDetailInteractor {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        timer = nil
     }
     
 }
@@ -56,6 +65,23 @@ extension WeatherDetailInteractor: WeatherDetailInteractorInput {
     func getData() {
         if let model = model {
             output?.obtained(convert(model))
+        }
+    }
+    
+    func refreshData() {
+        if let id = model?.id {
+            service.fetchWeather(of: id) { [weak self] result in
+                switch result {
+                case .success(let weatherData):
+                    if let message = weatherData.message {
+                        self?.output?.obtained(NSError(domain: "error", code: 22, userInfo: [NSLocalizedDescriptionKey: message]))
+                        return
+                    }
+                    self?.model = weatherData
+                case .failure(let error):
+                    self?.output?.obtained(error)
+                }
+            }
         }
     }
     
