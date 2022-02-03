@@ -43,6 +43,7 @@ class WeatherDetailViewController: UIViewController {
     // MARK: IBActions
     @IBAction func favouriteButtonTapped(_ sender: UIButton) {
         favouriteButton?.isSelected.toggle()
+        presenter?.favourite(favouriteButton?.isSelected)
     }
     
     // MARK: Other Functions

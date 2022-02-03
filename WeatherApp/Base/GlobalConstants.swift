@@ -19,6 +19,10 @@ struct GlobalConstants {
         static let unfavourite = UIImage(named: "unfavourite")
     }
     
+    struct UserDefaultsKey {
+        static let favouriteCities = "favouriteCities"
+    }
+    
     struct Notification {
         
         let name: String

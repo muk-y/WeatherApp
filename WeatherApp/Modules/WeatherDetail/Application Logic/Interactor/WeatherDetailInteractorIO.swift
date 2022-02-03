@@ -9,6 +9,7 @@
 protocol WeatherDetailInteractorInput: AnyObject {
     
     func getData()
+    func favourite(_ status: Bool?)
 
 }
 

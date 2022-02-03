@@ -9,6 +9,7 @@ import Foundation
 
 class WeatherData: ResponseMessage {
     
+    var id: Int?
     var location : String?
     var weatherConditions: [WeatherCondition]?
     var sys: Sys?
@@ -16,6 +17,7 @@ class WeatherData: ResponseMessage {
     var wind: Wind?
     
     enum CodingKeys: String, CodingKey {
+        case id
         case location = "name"
         case weatherConditions = "weather"
         case sys,
@@ -26,6 +28,7 @@ class WeatherData: ResponseMessage {
     required init(from decoder: Decoder) throws {
         try! super.init(from: decoder)
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decodeIfPresent(Int?.self, forKey: .id) ?? nil
         location = try container.decodeIfPresent(String?.self, forKey: .location) ?? nil
         weatherConditions = try container.decodeIfPresent([WeatherCondition]?.self, forKey: .weatherConditions) ?? nil
         sys = try container.decodeIfPresent(Sys?.self, forKey: .sys) ?? nil

@@ -19,6 +19,7 @@ class WeatherListInteractor {
     // MARK: Initialization
     init(service: WeatherListServiceType) {
         self.service = service
+        NotificationCenter.default.addObserver(self, selector: #selector(didGetWeather(_:)), name: GlobalConstants.Notification.didGetWeather.notificationName, object: nil)
     }
     
     // MARK: Converting entities
@@ -30,6 +31,22 @@ class WeatherListInteractor {
                                         country: $0.sys?.country,
                                         temperature: temperature == nil ? "N/A" : "\(temperature ?? .zero)° C",
                                         weatherConditionIcon: iconName == nil ? nil : "\(GlobalConstants.IMAGE_BASE_URL)\(iconName ?? "")@2x.png")}
+    }
+    
+    //MARK: Other functions
+    @objc private func didGetWeather(_ notification: Notification) {
+        if let weatherTuple = notification.object as? (weather: WeatherData, status: Bool) {
+            if weatherTuple.status && !models.contains(where: {$0.id == weatherTuple.weather.id}) {
+                models.append(weatherTuple.weather)
+            } else if let index = models.firstIndex(where: {$0.id == weatherTuple.weather.id}) {
+                models.remove(at: index)
+            }
+            output?.obtained(convert(models))
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
 }

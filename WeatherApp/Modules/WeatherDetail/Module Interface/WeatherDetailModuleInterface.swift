@@ -9,5 +9,6 @@
 protocol WeatherDetailModuleInterface: AnyObject {
     
     func viewIsReady()
+    func favourite(_ status: Bool?)
     
 }

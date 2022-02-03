@@ -22,7 +22,8 @@ class WeatherDetailPresenter {
                                       windSpeed: model.windSpeed,
                                       humidity: model.humidity,
                                       weatherCondition: model.weatherCondition,
-                                      weatherConditionIcon: model.weatherConditionIcon)
+                                      weatherConditionIcon: model.weatherConditionIcon,
+                                      isFavourite: model.isFavourite)
     }
     
 }
@@ -32,6 +33,10 @@ extension WeatherDetailPresenter: WeatherDetailModuleInterface {
     
     func viewIsReady() {
         interactor?.getData()
+    }
+    
+    func favourite(_ status: Bool?) {
+        interactor?.favourite(status)
     }
     
 }
