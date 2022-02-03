@@ -59,7 +59,7 @@ class WeatherDetailViewController: UIViewController {
         temperatureLabel?.font = CustomFont.bold.of(.customHeading(size: 30))
         [windSpeedLabel,
          humidityLabel].forEach({
-            $0?.font = CustomFont.regular.of(.heading4)
+            $0?.font = CustomFont.regular.of(.heading3)
             $0?.textColor = UIColor.white.withAlphaComponent(0.7)
         })
         [locationLabel,

@@ -36,9 +36,9 @@
 		98BC245527AC0A7F00A746A7 /* WeatherDetailStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC245427AC0A7F00A746A7 /* WeatherDetailStructure.swift */; };
 		98BC245727AC0C1700A746A7 /* WeatherDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC245627AC0C1700A746A7 /* WeatherDetailViewModel.swift */; };
 		98BC245927AC0E8100A746A7 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC245827AC0E8100A746A7 /* CustomFont.swift */; };
+		98BC245B27AC170800A746A7 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC245A27AC170800A746A7 /* ApiResponse.swift */; };
 		AA33B1B827AAD16700A6B426 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33B1B727AAD16700A6B426 /* AppDelegate.swift */; };
 		AA33B1BA27AAD16700A6B426 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33B1B927AAD16700A6B426 /* SceneDelegate.swift */; };
-		AA33B1BC27AAD16700A6B426 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA33B1BB27AAD16700A6B426 /* ViewController.swift */; };
 		AA33B1BF27AAD16700A6B426 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA33B1BD27AAD16700A6B426 /* Main.storyboard */; };
 		AA33B1C127AAD16800A6B426 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA33B1C027AAD16800A6B426 /* Assets.xcassets */; };
 		AA33B1C427AAD16800A6B426 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA33B1C227AAD16800A6B426 /* LaunchScreen.storyboard */; };
@@ -92,10 +92,10 @@
 		98BC245427AC0A7F00A746A7 /* WeatherDetailStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailStructure.swift; sourceTree = "<group>"; };
 		98BC245627AC0C1700A746A7 /* WeatherDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewModel.swift; sourceTree = "<group>"; };
 		98BC245827AC0E8100A746A7 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
+		98BC245A27AC170800A746A7 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		AA33B1B427AAD16700A6B426 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA33B1B727AAD16700A6B426 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA33B1B927AAD16700A6B426 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AA33B1BB27AAD16700A6B426 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AA33B1BE27AAD16700A6B426 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AA33B1C027AAD16800A6B426 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA33B1C327AAD16800A6B426 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -139,6 +139,7 @@
 				98BC241A27ABECE800A746A7 /* Sys.swift */,
 				98BC241C27ABEDA300A746A7 /* Main.swift */,
 				98BC245227AC08B800A746A7 /* Wind.swift */,
+				98BC245A27AC170800A746A7 /* ApiResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,7 +287,6 @@
 				AA33B1CB27AAD17300A6B426 /* Base */,
 				AA33B1B727AAD16700A6B426 /* AppDelegate.swift */,
 				AA33B1B927AAD16700A6B426 /* SceneDelegate.swift */,
-				AA33B1BB27AAD16700A6B426 /* ViewController.swift */,
 				AA33B1BD27AAD16700A6B426 /* Main.storyboard */,
 				AA33B1C027AAD16800A6B426 /* Assets.xcassets */,
 				AA33B1C227AAD16800A6B426 /* LaunchScreen.storyboard */,
@@ -521,7 +521,6 @@
 				AA33B1F327AAD2B100A6B426 /* WeatherListModuleInterface.swift in Sources */,
 				98BC241427ABE4FF00A746A7 /* WeatherListViewModel.swift in Sources */,
 				AA33B1EE27AAD2B100A6B426 /* WeatherListWireframeInput.swift in Sources */,
-				AA33B1BC27AAD16700A6B426 /* ViewController.swift in Sources */,
 				98BC241D27ABEDA300A746A7 /* Main.swift in Sources */,
 				98BC245327AC08B800A746A7 /* Wind.swift in Sources */,
 				98BC241927ABE7AE00A746A7 /* UIColor+Extension.swift in Sources */,
@@ -534,6 +533,7 @@
 				AA33B1F427AAD2B100A6B426 /* WeatherListServiceType.swift in Sources */,
 				98BC245727AC0C1700A746A7 /* WeatherDetailViewModel.swift in Sources */,
 				98BC242127ABF60C00A746A7 /* UIImageView+Extension.swift in Sources */,
+				98BC245B27AC170800A746A7 /* ApiResponse.swift in Sources */,
 				98BC244A27ABFBD800A746A7 /* WeatherDetailViewController.swift in Sources */,
 				AA33B1F627AAD2B100A6B426 /* WeatherListInteractor.swift in Sources */,
 				98BC244B27ABFBD800A746A7 /* WeatherDetailViewInterface.swift in Sources */,

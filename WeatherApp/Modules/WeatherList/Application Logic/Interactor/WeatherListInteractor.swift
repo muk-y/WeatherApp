@@ -63,6 +63,10 @@ extension WeatherListInteractor: WeatherListInteractorInput {
         service.fetchWeatherData(of: location) { [weak self] result in
             switch result {
             case .success(let weatherData):
+                if let message = weatherData.message {
+                    self?.output?.obtained(NSError(domain: "error", code: 22, userInfo: [NSLocalizedDescriptionKey: message]))
+                    return
+                }
                 self?.output?.obtainedSearchSuccess()
                 GlobalConstants.Notification.didGetWeather.fire(with: weatherData)
             case .failure(let error):

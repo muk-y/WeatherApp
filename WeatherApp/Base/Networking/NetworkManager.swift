@@ -26,7 +26,7 @@ class NetworkManager {
             }
             URLSession.shared.dataTaskPublisher(for: url)
                 .tryMap { (data, response) -> Data in
-                    guard let httpResponse = response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode else {
+                    guard response is HTTPURLResponse else {
                         throw NetworkError.responseError
                     }
                     return data
@@ -35,14 +35,16 @@ class NetworkManager {
                 .receive(on: RunLoop.main)
                 .sink(receiveCompletion: { (completion) in
                     if case let .failure(error) = completion {
+                        var errorDescription: String?
                         switch error {
                         case let decodingError as DecodingError:
-                            promise(.failure(decodingError))
+                            errorDescription = decodingError.errorDescription
                         case let apiError as NetworkError:
-                            promise(.failure(apiError))
+                            errorDescription = apiError.errorDescription
                         default:
-                            promise(.failure(NetworkError.unknown))
+                            errorDescription = NetworkError.unknown.errorDescription
                         }
+                        promise(.failure(NSError(domain: "error", code: 22, userInfo: [NSLocalizedDescriptionKey: errorDescription ?? NetworkError.unknown.errorDescription])))
                     }
                 }, receiveValue: { promise(.success($0)) })
                 .store(in: &self.cancellables)

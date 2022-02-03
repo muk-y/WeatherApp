@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WeatherData: Codable {
+class WeatherData: ResponseMessage {
     
     var location : String?
     var weatherConditions: [WeatherCondition]?
@@ -24,6 +24,7 @@ class WeatherData: Codable {
     }
     
     required init(from decoder: Decoder) throws {
+        try! super.init(from: decoder)
         let container = try decoder.container(keyedBy: CodingKeys.self)
         location = try container.decodeIfPresent(String?.self, forKey: .location) ?? nil
         weatherConditions = try container.decodeIfPresent([WeatherCondition]?.self, forKey: .weatherConditions) ?? nil
