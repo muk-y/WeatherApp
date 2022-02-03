@@ -32,11 +32,19 @@ class WeatherListViewController: UIViewController {
     
     // MARK: Other Functions
     private func setup() {
+        setupView()
         setupTableView()
     }
     
     private func setupTableView() {
         tableView?.dataSource = self
+        tableView?.delegate = self
+        tableView?.backgroundColor = .clear
+        tableView?.contentInset = UIEdgeInsets(top: 8, left: .zero, bottom: 8, right: .zero)
+    }
+    
+    private func setupView() {
+        view.backgroundColor = .black
     }
     
 }
@@ -62,5 +70,12 @@ extension WeatherListViewController: UITableViewDataSource {
         cell.viewModel = viewModels?[indexPath.row]
         return cell
     }
+    
+}
+
+// MARK: UITableViewDataSource
+extension WeatherListViewController: UITableViewDelegate {
+    
+    
     
 }

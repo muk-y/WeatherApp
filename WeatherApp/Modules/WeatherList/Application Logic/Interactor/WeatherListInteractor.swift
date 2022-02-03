@@ -10,7 +10,7 @@ import Foundation
 
 class WeatherListInteractor {
     
-	// MARK: Properties
+    // MARK: Properties
     weak var output: WeatherListInteractorOutput?
     private let service: WeatherListServiceType
     private var cities = ["Kathmandu", "Pokhara", "Ilam"]
@@ -21,12 +21,15 @@ class WeatherListInteractor {
     init(service: WeatherListServiceType) {
         self.service = service
     }
-
+    
     // MARK: Converting entities
     private func convert(_ models: [WeatherData]) -> [WeatherListStructure] {
-        return models.map({WeatherListStructure(location: $0.location,
-                                                weatherCondition: $0.weatherConditions?.first?.title,
-                                                weatherConditionIcon: $0.weatherConditions?.first?.icon)})
+        models.map{
+            let temperature = $0.main?.temperature
+            return WeatherListStructure(location: $0.location,
+                                        country: $0.sys?.country,
+                                        temperature: temperature == nil ? "N/A" : "\(temperature ?? .zero)° C",
+                                        weatherConditionIcon: $0.weatherConditions?.first?.icon)}
     }
     
 }

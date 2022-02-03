@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol WeatherListServiceType: class {
+protocol WeatherListServiceType: AnyObject {
     
     func fetchWeatherData(of city: String, completion: @escaping (Result<WeatherData, Error>) -> ())
     

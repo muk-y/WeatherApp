@@ -9,13 +9,21 @@ import Foundation
 
 enum Endpoint {
     
-    case fetchWeather(city: String)
+    case fetchWeather(city: String, unit: Unit = .celsius)
     
     var path: String {
         switch self {
-        case .fetchWeather(let city):
-            return "weather?q=\(city)"
+        case .fetchWeather(let city, let unit):
+            return "weather?q=\(city)&units=\(unit.rawValue)"
         }
     }
+    
+}
+
+enum Unit: String {
+    
+    case fahrenheit = "imperial"
+    case celsius = "metric"
+    case kelvin = "standard"
     
 }

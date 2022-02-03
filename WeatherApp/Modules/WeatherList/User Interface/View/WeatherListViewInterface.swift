@@ -6,7 +6,7 @@
 //
 //
 
-protocol WeatherListViewInterface: class {
+protocol WeatherListViewInterface: AnyObject {
     
     func show(_ models: [WeatherListViewModel])
     

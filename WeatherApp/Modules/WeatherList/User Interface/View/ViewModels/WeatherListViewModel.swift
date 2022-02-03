@@ -10,7 +10,8 @@ import Foundation
 struct WeatherListViewModel {
     
     var location: String?
-    var weatherCondition: String?
+    var country: String?
+    var temperature: String?
     var weatherConditionIcon: String?
     
 }

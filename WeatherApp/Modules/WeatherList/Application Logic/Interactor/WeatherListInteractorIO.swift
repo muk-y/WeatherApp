@@ -6,13 +6,13 @@
 //
 //
 
-protocol WeatherListInteractorInput: class {
+protocol WeatherListInteractorInput: AnyObject {
     
     func getData()
 
 }
 
-protocol WeatherListInteractorOutput: class {
+protocol WeatherListInteractorOutput: AnyObject {
     
     func obtained(_ models: [WeatherListStructure])
     func obtained(_ error: Error)

@@ -18,7 +18,8 @@ class WeatherListPresenter {
     // MARK: Converting entities
     private func convert(_ models: [WeatherListStructure]) -> [WeatherListViewModel] {
         return models.map({WeatherListViewModel(location: $0.location,
-                                                weatherCondition: $0.weatherCondition,
+                                                country: $0.country,
+                                                temperature: $0.temperature,
                                                 weatherConditionIcon: $0.weatherConditionIcon)})
     }
     

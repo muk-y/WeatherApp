@@ -6,7 +6,7 @@
 //
 //
 
-protocol WeatherListModuleInterface: class {
+protocol WeatherListModuleInterface: AnyObject {
     
     func viewIsReady()
     
