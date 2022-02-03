@@ -17,6 +17,11 @@ class WeatherListViewController: UIViewController {
             tableView?.reloadData()
         }
     }
+    private lazy var searchBar: CustomSearchBar = {
+        let searchBar = CustomSearchBar()
+        searchBar.textField?.placeholder = "Search for a location"
+        return searchBar
+    }()
     
     // MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView?
@@ -26,6 +31,11 @@ class WeatherListViewController: UIViewController {
         super.viewDidLoad()
         setup()
         presenter?.viewIsReady()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchBar.textField?.text = ""
     }
     
     // MARK: IBActions
@@ -39,8 +49,6 @@ class WeatherListViewController: UIViewController {
     
     private func setupNavBar() {
         navigationItem.title = ""
-        let searchBar = CustomSearchBar()
-        searchBar.textField?.placeholder = "Search for a location"
         searchBar.textField?.delegate = self
         navigationItem.titleView = searchBar
     }
@@ -86,6 +94,7 @@ extension WeatherListViewController: UITableViewDataSource {
 extension WeatherListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        view.endEditing(true)
         presenter?.weatherDetail(of: indexPath.row)
     }
     
