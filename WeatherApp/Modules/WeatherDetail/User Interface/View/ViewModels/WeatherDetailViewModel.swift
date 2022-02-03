@@ -13,6 +13,7 @@ struct WeatherDetailViewModel {
     var temperature: String?
     var windSpeed: String?
     var humidity: String?
+    var weatherCondition: String?
     var weatherConditionIcon: String?
     
 }

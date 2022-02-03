@@ -19,4 +19,8 @@ extension UIView {
         }
     }
     
+    func capsuled() {
+        curve = frame.height / 2
+    }
+    
 }

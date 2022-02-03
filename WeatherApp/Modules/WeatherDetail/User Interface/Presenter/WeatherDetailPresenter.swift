@@ -21,6 +21,7 @@ class WeatherDetailPresenter {
                                       temperature: model.temperature,
                                       windSpeed: model.windSpeed,
                                       humidity: model.humidity,
+                                      weatherCondition: model.weatherCondition,
                                       weatherConditionIcon: model.weatherConditionIcon)
     }
     

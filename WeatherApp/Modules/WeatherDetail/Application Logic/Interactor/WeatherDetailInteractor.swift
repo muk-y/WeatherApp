@@ -24,14 +24,15 @@ class WeatherDetailInteractor {
     // MARK: Converting entities
     private func convert(_ model: WeatherData) -> WeatherDetailStructure {
         let temperature = model.main?.temperature
-        let iconName = model.weatherConditions?.first?.icon
         let windSpeed = model.wind?.speed
         let humidity = model.main?.humidity
+        let weatherCondition = model.weatherConditions?.first
         return WeatherDetailStructure(location: model.location,
                                       temperature: temperature == nil ? "N/A" : "\(temperature ?? .zero)° C",
                                       windSpeed: windSpeed == nil ? "N/A" : "\(windSpeed ?? .zero) m/s",
                                       humidity: humidity == nil ? "N/A" : "\(humidity ?? .zero)%",
-                                      weatherConditionIcon: iconName == nil ? nil : "\(GlobalConstants.IMAGE_BASE_URL)\(iconName ?? "")@2x.png")
+                                      weatherCondition: weatherCondition?.title,
+                                      weatherConditionIcon: weatherCondition?.icon == nil ? nil : "\(GlobalConstants.IMAGE_BASE_URL)\(weatherCondition?.icon ?? "")@2x.png")
     }
     
     //MARK: Other functions

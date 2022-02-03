@@ -38,11 +38,35 @@ class WeatherDetailViewController: UIViewController {
     
     // MARK: Other Functions
     private func setup() {
-        // all setup should be done here
+        setupView()
+        setupLabel()
+    }
+    
+    private func setupView() {
+        view.backgroundColor = .primary
+        weatherConditionContainerView?.backgroundColor = UIColor.secondary.withAlphaComponent(0.33)
+        weatherConditionContainerView?.capsuled()
+    }
+    
+    private func setupLabel() {
+        locationLabel?.font = CustomFont.regular.of(.heading1)
+        weatherConditionLabel?.font = CustomFont.regular.of(.heading3)
+        temperatureLabel?.font = CustomFont.bold.of(.customHeading(size: 30))
+        [windSpeedLabel,
+         humidityLabel].forEach({
+            $0?.font = CustomFont.regular.of(.heading4)
+            $0?.textColor = UIColor.white.withAlphaComponent(0.7)
+        })
+        [locationLabel,
+         temperatureLabel,
+         weatherConditionLabel].forEach({
+            $0?.textColor = .white
+        })
     }
     
     private func setData() {
         locationLabel?.text = viewModel?.location
+        weatherConditionLabel?.text = viewModel?.weatherCondition
         weatherConditionIconImageView?.showImage(with: viewModel?.weatherConditionIcon)
         temperatureLabel?.text = viewModel?.temperature
         windSpeedLabel?.text = viewModel?.windSpeed

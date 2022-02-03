@@ -47,6 +47,9 @@ class WeatherListTableViewCell: UITableViewCell {
         countryLabel].forEach({
             $0?.textColor = $0 == countryLabel ? UIColor.white.withAlphaComponent(0.7) : .white
         })
+        temperatureLabel?.font = CustomFont.bold.of(.customHeading(size: 24))
+        locationLabel?.font = CustomFont.regular.of(.heading1)
+        countryLabel?.font = CustomFont.regular.of(.heading2)
     }
     
     private func setData() {
