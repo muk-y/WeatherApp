@@ -41,7 +41,7 @@ class WeatherDetailInteractor {
                                       humidity: humidity == nil ? "N/A" : "\(humidity ?? .zero)%",
                                       weatherCondition: weatherCondition?.title,
                                       weatherConditionIcon: weatherCondition?.icon == nil ? nil : "\(GlobalConstants.IMAGE_BASE_URL)\(weatherCondition?.icon ?? "")@2x.png",
-                                      isFavourite: GlobalConstants.requiredLocationsID.contains(model.id ?? .zero) ? nil : DataManager.favouriteCitiesID.contains(model.id ?? .zero))
+                                      isFavourite: DataManager.requiredLocationsID.contains(model.id ?? .zero) ? nil : DataManager.favouriteCitiesID.contains(model.id ?? .zero))
     }
     
     //MARK: Other functions
