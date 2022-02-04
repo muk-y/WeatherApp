@@ -32,6 +32,7 @@ class WeatherDetailPresenter {
 extension WeatherDetailPresenter: WeatherDetailModuleInterface {
     
     func viewIsReady() {
+        view?.showLoading()
         interactor?.getData()
     }
     
@@ -45,10 +46,12 @@ extension WeatherDetailPresenter: WeatherDetailModuleInterface {
 extension WeatherDetailPresenter: WeatherDetailInteractorOutput {
     
     func obtained(_ model: WeatherDetailStructure) {
+        view?.hideLoading()
         view?.show(convert(model))
     }
     
     func obtained(_ error: Error) {
+        view?.hideLoading()
         view?.alert(message: error.localizedDescription)
     }
     

@@ -21,4 +21,34 @@ extension UIViewController {
         return UIAlertController(title: title, message: message, preferredStyle: .alert)
     }
     
+    //MARK: Loading
+    private static let association = ObjectAssociation<UIActivityIndicatorView>()
+    var activityIndicatorView: UIActivityIndicatorView {
+        set { UIViewController.association[self] = newValue }
+        get {
+            if let indicator = UIViewController.association[self] {
+                return indicator
+            } else {
+                UIViewController.association[self] = UIActivityIndicatorView.customIndicator(at: view.center)
+                return UIViewController.association[self]!
+            }
+        }
+    }
+    
+    func showLoading() {
+        DispatchQueue.main.async { [weak self] in
+            if let activityIndicatorView = self?.activityIndicatorView {
+                self?.view.addSubview(activityIndicatorView)
+            }
+            self?.activityIndicatorView.startAnimating()
+        }
+    }
+    
+    func hideLoading() {
+        DispatchQueue.main.async { [weak self] in
+            self?.activityIndicatorView.removeFromSuperview()
+            self?.activityIndicatorView.stopAnimating()
+        }
+    }
+    
 }

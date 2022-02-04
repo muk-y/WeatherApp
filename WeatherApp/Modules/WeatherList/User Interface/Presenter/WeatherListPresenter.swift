@@ -29,10 +29,12 @@ class WeatherListPresenter {
 extension WeatherListPresenter: WeatherListModuleInterface {
     
     func viewIsReady() {
+        view?.showLoading()
         interactor?.getData()
     }
     
     func searchWeather(for location: String?) {
+        view?.showLoading()
         interactor?.searchWeather(for: location)
     }
     
@@ -47,14 +49,17 @@ extension WeatherListPresenter: WeatherListModuleInterface {
 extension WeatherListPresenter: WeatherListInteractorOutput {
     
     func obtained(_ models: [WeatherListStructure]) {
+        view?.hideLoading()
         view?.show(convert(models))
     }
     
     func obtainedSearchSuccess() {
+        view?.hideLoading()
         wireframe?.openWeatherDetail()
     }
     
     func obtained(_ error: Error) {
+        view?.hideLoading()
         view?.alert(message: error.localizedDescription)
     }
     
