@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		984A7AF727ACD87300C769B2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984A7AF627ACD87300C769B2 /* DataManager.swift */; };
 		98BC241127ABE4DE00A746A7 /* WeatherCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC240F27ABE4DE00A746A7 /* WeatherCondition.swift */; };
 		98BC241227ABE4DE00A746A7 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC241027ABE4DE00A746A7 /* WeatherData.swift */; };
 		98BC241427ABE4FF00A746A7 /* WeatherListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BC241327ABE4FF00A746A7 /* WeatherListViewModel.swift */; };
@@ -63,6 +64,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		984A7AF627ACD87300C769B2 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		98BC240F27ABE4DE00A746A7 /* WeatherCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCondition.swift; sourceTree = "<group>"; };
 		98BC241027ABE4DE00A746A7 /* WeatherData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		98BC241327ABE4FF00A746A7 /* WeatherListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherListViewModel.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			children = (
 				98BC242327ABF90F00A746A7 /* CustomSearchBar.swift */,
 				98BC245827AC0E8100A746A7 /* CustomFont.swift */,
+				984A7AF627ACD87300C769B2 /* DataManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				AA33B20027AAD4E300A6B426 /* UITableView+Extension.swift in Sources */,
 				98BC244D27AC02ED00A746A7 /* Array+Extension.swift in Sources */,
 				98BC244427ABFBD800A746A7 /* WeatherDetailInteractor.swift in Sources */,
+				984A7AF727ACD87300C769B2 /* DataManager.swift in Sources */,
 				98BC245927AC0E8100A746A7 /* CustomFont.swift in Sources */,
 				98BC244827ABFBD800A746A7 /* WeatherDetailWireframeInput.swift in Sources */,
 				98BC244F27AC044B00A746A7 /* BaseViewInterface.swift in Sources */,

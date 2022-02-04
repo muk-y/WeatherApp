@@ -35,14 +35,13 @@ class WeatherDetailInteractor {
         let windSpeed = model.wind?.speed
         let humidity = model.main?.humidity
         let weatherCondition = model.weatherConditions?.first
-        let favouriteCitiesID = UserDefaults.standard.array(forKey: GlobalConstants.UserDefaultsKey.favouriteCitiesID) as? [Int] ?? []
         return WeatherDetailStructure(location: model.location,
                                       temperature: temperature == nil ? "N/A" : "\(temperature ?? .zero)° C",
                                       windSpeed: windSpeed == nil ? "N/A" : "\(windSpeed ?? .zero) m/s",
                                       humidity: humidity == nil ? "N/A" : "\(humidity ?? .zero)%",
                                       weatherCondition: weatherCondition?.title,
                                       weatherConditionIcon: weatherCondition?.icon == nil ? nil : "\(GlobalConstants.IMAGE_BASE_URL)\(weatherCondition?.icon ?? "")@2x.png",
-                                      isFavourite: GlobalConstants.requiredLocationsID.contains(model.id ?? .zero) ? nil : favouriteCitiesID.contains(model.id ?? .zero))
+                                      isFavourite: GlobalConstants.requiredLocationsID.contains(model.id ?? .zero) ? nil : DataManager.favouriteCitiesID.contains(model.id ?? .zero))
     }
     
     //MARK: Other functions
@@ -89,7 +88,7 @@ extension WeatherDetailInteractor: WeatherDetailInteractorInput {
         if let isFavourite = status,
            let model = model,
            let id = model.id {
-            var favouriteCitiesID = UserDefaults.standard.array(forKey: GlobalConstants.UserDefaultsKey.favouriteCitiesID) as? [Int] ?? []
+            var favouriteCitiesID = DataManager.favouriteCitiesID
             if isFavourite && !favouriteCitiesID.contains(id) {
                 favouriteCitiesID.append(id)
             } else if let index = favouriteCitiesID.firstIndex(where: {$0 == id}) {

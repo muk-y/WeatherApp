@@ -66,7 +66,7 @@ extension WeatherListInteractor: WeatherListInteractorInput {
     func getData() {
         models.removeAll()
         var citiesID = GlobalConstants.requiredLocationsID
-        citiesID.append(contentsOf: UserDefaults.standard.array(forKey: GlobalConstants.UserDefaultsKey.favouriteCitiesID) as? [Int] ?? [])
+        citiesID.append(contentsOf: DataManager.favouriteCitiesID)
         citiesID.forEach({
             dispatchGroup.enter()
             service.fetchWeatherData(city: nil, id: $0) { [weak self] result in
