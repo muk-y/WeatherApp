@@ -65,11 +65,11 @@ extension WeatherListInteractor: WeatherListInteractorInput {
     
     func getData() {
         models.removeAll()
-        var cities = GlobalConstants.requiredLocations
-        cities.append(contentsOf: UserDefaults.standard.stringArray(forKey: GlobalConstants.UserDefaultsKey.favouriteCities) ?? [])
-        cities.forEach({
+        var citiesID = GlobalConstants.requiredLocationsID
+        citiesID.append(contentsOf: UserDefaults.standard.array(forKey: GlobalConstants.UserDefaultsKey.favouriteCitiesID) as? [Int] ?? [])
+        citiesID.forEach({
             dispatchGroup.enter()
-            service.fetchWeatherData(of: $0) { [weak self] result in
+            service.fetchWeatherData(city: nil, id: $0) { [weak self] result in
                 switch result {
                 case .success(let weatherData):
                     if let message = weatherData.message {
@@ -92,7 +92,7 @@ extension WeatherListInteractor: WeatherListInteractorInput {
     
     func searchWeather(for location: String?) {
         guard let location = location else { return }
-        service.fetchWeatherData(of: location) { [weak self] result in
+        service.fetchWeatherData(city: location, id: nil) { [weak self] result in
             switch result {
             case .success(let weatherData):
                 if let message = weatherData.message {

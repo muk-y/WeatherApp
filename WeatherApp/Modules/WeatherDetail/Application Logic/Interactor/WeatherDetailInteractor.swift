@@ -35,14 +35,14 @@ class WeatherDetailInteractor {
         let windSpeed = model.wind?.speed
         let humidity = model.main?.humidity
         let weatherCondition = model.weatherConditions?.first
-        let favouriteCities = UserDefaults.standard.stringArray(forKey: GlobalConstants.UserDefaultsKey.favouriteCities) ?? []
+        let favouriteCitiesID = UserDefaults.standard.array(forKey: GlobalConstants.UserDefaultsKey.favouriteCitiesID) as? [Int] ?? []
         return WeatherDetailStructure(location: model.location,
                                       temperature: temperature == nil ? "N/A" : "\(temperature ?? .zero)° C",
                                       windSpeed: windSpeed == nil ? "N/A" : "\(windSpeed ?? .zero) m/s",
                                       humidity: humidity == nil ? "N/A" : "\(humidity ?? .zero)%",
                                       weatherCondition: weatherCondition?.title,
                                       weatherConditionIcon: weatherCondition?.icon == nil ? nil : "\(GlobalConstants.IMAGE_BASE_URL)\(weatherCondition?.icon ?? "")@2x.png",
-                                      isFavourite: GlobalConstants.requiredLocations.contains(model.location ?? "") || model.location == "Ilām" ? nil : favouriteCities.contains(model.location ?? ""))
+                                      isFavourite: GlobalConstants.requiredLocationsID.contains(model.id ?? .zero) ? nil : favouriteCitiesID.contains(model.id ?? .zero))
     }
     
     //MARK: Other functions
@@ -88,14 +88,14 @@ extension WeatherDetailInteractor: WeatherDetailInteractorInput {
     func favourite(_ status: Bool?) {
         if let isFavourite = status,
            let model = model,
-           let location = model.location {
-            var favouriteCities = UserDefaults.standard.stringArray(forKey: GlobalConstants.UserDefaultsKey.favouriteCities) ?? []
-            if isFavourite && !favouriteCities.contains(location) {
-                favouriteCities.append(location)
-            } else if let index = favouriteCities.firstIndex(where: {$0 == location}) {
-                favouriteCities.remove(at: index)
+           let id = model.id {
+            var favouriteCitiesID = UserDefaults.standard.array(forKey: GlobalConstants.UserDefaultsKey.favouriteCitiesID) as? [Int] ?? []
+            if isFavourite && !favouriteCitiesID.contains(id) {
+                favouriteCitiesID.append(id)
+            } else if let index = favouriteCitiesID.firstIndex(where: {$0 == id}) {
+                favouriteCitiesID.remove(at: index)
             }
-            UserDefaults.standard.setValue(favouriteCities, forKey: GlobalConstants.UserDefaultsKey.favouriteCities)
+            UserDefaults.standard.setValue(favouriteCitiesID, forKey: GlobalConstants.UserDefaultsKey.favouriteCitiesID)
             GlobalConstants.Notification.didGetWeather.fire(with: (weather: model, status: isFavourite))
         }
     }

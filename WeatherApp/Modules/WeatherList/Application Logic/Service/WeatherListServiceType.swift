@@ -10,6 +10,6 @@ import Foundation
 
 protocol WeatherListServiceType: AnyObject {
     
-    func fetchWeatherData(of city: String, completion: @escaping (Result<WeatherData, Error>) -> ())
+    func fetchWeatherData(city: String?, id: Int?, completion: @escaping (Result<WeatherData, Error>) -> ())
     
 }

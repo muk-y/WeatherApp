@@ -12,7 +12,7 @@ struct GlobalConstants {
     
     static let API_KEY = "2d4e852a3aa6c57f13e19c8bf611a9d7"
     static let IMAGE_BASE_URL = "https://openweathermap.org/img/wn/"
-    static let requiredLocations = ["Kathmandu", "Pokhara", "Ilam"]
+    static let requiredLocationsID = [1283240, 1283334, 1282898]
     static let refreshingMinInterval: Double = 5
     
     struct Image {
@@ -21,7 +21,7 @@ struct GlobalConstants {
     }
     
     struct UserDefaultsKey {
-        static let favouriteCities = "favouriteCities"
+        static let favouriteCitiesID = "favouriteCitiesID"
     }
     
     struct Notification {

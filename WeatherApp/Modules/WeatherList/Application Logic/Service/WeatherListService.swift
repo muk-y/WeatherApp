@@ -15,8 +15,8 @@ class WeatherListService: WeatherListServiceType {
     private var cancellables = Set<AnyCancellable>()
     
     //MARK: Other functions
-    func fetchWeatherData(of city: String, completion: @escaping (Result<WeatherData, Error>) -> ()) {
-        NetworkManager.shared.getData(endpoint: .fetchCityWeather(city: city), type: WeatherData.self)
+    func fetchWeatherData(city: String? = nil, id: Int? = nil, completion: @escaping (Result<WeatherData, Error>) -> ()) {
+        NetworkManager.shared.getData(endpoint: city == nil ? .fetchWeather(id: id ?? .zero) : .fetchCityWeather(city: city ?? ""), type: WeatherData.self)
             .sink { finished in
                 switch finished {
                 case .failure(let error):
